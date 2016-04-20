@@ -24,7 +24,7 @@ public class ApplicationManager {
     sessionHelper.login("admin", "secret");
   }
 
-  protected void stop() {
+  public void stop() {
     wd.quit();
   }
 

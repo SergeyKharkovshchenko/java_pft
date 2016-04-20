@@ -36,7 +36,7 @@ public class GroupHelper extends HelperBase {
     click(By.name("delete"));
   }
 
-  protected void selectGroup() {
+  public void selectGroup() {
     click(By.xpath("//div[@id='content']/form/span[2]/input"));
   }
 }
