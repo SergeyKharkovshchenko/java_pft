@@ -2,23 +2,23 @@ package ru.stqa.pft.addressbook.tests;
 
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import ru.stqa.pft.addressbook.appmanager.ApplicationManager2;
+import ru.stqa.pft.addressbook.appmanager.AddContactApplicationManager;
 
 /**
  * Created by Sergey on 20.04.2016.
  */
-public class TestBase2 {
+public class AddContactTestBase {
 
-  protected final ApplicationManager2 app2 = new ApplicationManager2();
+  protected final AddContactApplicationManager addContactApp = new AddContactApplicationManager();
 
   @BeforeMethod
   public void setUp() throws Exception {
-    app2.init();
+    addContactApp.init();
   }
 
   @AfterMethod
   public void tearDown() {
-    app2.stop();
+    addContactApp.stop();
   }
 
 }

@@ -6,9 +6,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 /**
  * Created by Sergey on 20.04.2016.
  */
-public class NavigationHelper2 extends HelperBase {
+public class AddContactNavigationHelper extends HelperBase {
 
-  public NavigationHelper2(FirefoxDriver wd) {
+  public AddContactNavigationHelper(FirefoxDriver wd) {
     super (wd);
   }
 

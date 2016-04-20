@@ -6,9 +6,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 /**
  * Created by Sergey on 20.04.2016.
  */
-public class SessionHelper2 extends HelperBase {
+public class AddContactSessionHelper extends HelperBase {
 
-  public SessionHelper2(FirefoxDriver wd) {
+  public AddContactSessionHelper(FirefoxDriver wd) {
     super (wd);
   }
   public void login(String user, String password) {
