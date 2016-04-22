@@ -1,18 +1,22 @@
 package ru.stqa.pft.addressbook.model;
 
-public class NewContactData {
+/**
+ * Created by Sergey on 21.04.2016.
+ */
+public class ContactData {
+
   private final String name;
   private final String lastname;
   private final String email;
 
-  public NewContactData(String name, String lastname, String email) {
+  public ContactData(String name, String lastname, String email) {
     this.name = name;
     this.lastname = lastname;
     this.email = email;
   }
 
   public String getName() {
-    return name;
+  return name;
   }
 
   public String getLastname() {

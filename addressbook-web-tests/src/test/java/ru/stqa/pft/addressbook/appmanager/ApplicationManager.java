@@ -13,6 +13,7 @@ public class ApplicationManager {
   private SessionHelper sessionHelper;
   private NavigationHelper navigationHelper;
   private GroupHelper groupHelper;
+  private ContactsHelper contactsHelper;
 
 
   public void init() {
@@ -20,6 +21,7 @@ public class ApplicationManager {
     wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
     wd.get("http://localhost/addressbook/group.php");
     groupHelper = new GroupHelper(wd);
+    contactsHelper = new ContactsHelper(wd);
     navigationHelper = new NavigationHelper(wd);
     sessionHelper = new SessionHelper(wd);
     sessionHelper.login("admin", "secret");
@@ -36,5 +38,10 @@ public class ApplicationManager {
   public NavigationHelper getNavigationHelper() {
     return navigationHelper;
   }
+
+  public ContactsHelper getContactsHelper()  {
+    return contactsHelper;
+  }
+
 
 }
