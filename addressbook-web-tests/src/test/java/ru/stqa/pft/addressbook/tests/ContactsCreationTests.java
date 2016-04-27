@@ -12,10 +12,8 @@ public class ContactsCreationTests extends TestBase {
   @Test
   public void testAddNew(){
     app.getNavigationHelper().gotoAddNewPage();
-    app.getContactsHelper().fillContactsForm ( new ContactData("Sergey", null, null, "test1") , true);
-    app.getContactsHelper().submitAddContact();
+    app.getContactsHelper().createContact(new ContactData("Sergey", null, null, "test1") , true);
     app.getNavigationHelper().gotoHomePage();
-
   };
 
 }
