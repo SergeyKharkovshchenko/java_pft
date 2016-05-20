@@ -131,6 +131,7 @@ public class ContactsHelper extends HelperBase {
     initContactModificationById(contact.getId());
     String name = wd.findElement(By.name("firstname")).getAttribute("value");
     String lastname = wd.findElement(By.name("lastname")).getAttribute("value");
+    String address = wd.findElement(By.name("address")).getAttribute("value");
     String home = wd.findElement(By.name("home")).getAttribute("value");
     String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
     String work = wd.findElement(By.name("work")).getAttribute("value");
@@ -138,9 +139,17 @@ public class ContactsHelper extends HelperBase {
     String email2 = wd.findElement(By.name("email2")).getAttribute("value");
     String email3 = wd.findElement(By.name("email3")).getAttribute("value");
     wd.navigate().back();
-    return new ContactData().withId(contact.getId()).withName(name).withLastname(lastname)
+    return new ContactData().withId(contact.getId()).withName(name).withLastname(lastname).withAddress(address)
             .withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work)
             .withEmail1(email1).withEmail2(email2).withEmail3(email3);
+  }
+
+  public String infoFromDetailsForm(ContactData contact) {
+    initContactDetailsById(contact.getId());
+    String [] details = wd.findElement(By.xpath("//div[@id='content']")).getText().split("\n\n\nMember");
+    wd.navigate().back();
+    return details [0].replaceAll("W: ","").replaceAll("M: ","").replaceAll("H: ","")
+            .replaceAll(" \\(www.*\\)","").replaceAll("\n\n","\n");
   }
 
   private void initContactModificationById (int id) {
@@ -154,4 +163,12 @@ public class ContactsHelper extends HelperBase {
     // wd.findElement (By.cssSelector (String.format ("a[href='edit.php?id=%s']",id))).click();
 
   }
+
+  private void initContactDetailsById (int id) {
+    WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value='%s']", id)));
+    WebElement row = checkbox.findElement(By.xpath("./../.."));
+    List <WebElement> cells = row.findElements(By.tagName("td"));
+    cells.get(6).findElement(By.tagName("a")).click();
+  }
+
 }
