@@ -60,10 +60,12 @@ public class ContactDataGenerator {
     private List<ContactData> generateContacts(int count) {
         List <ContactData> contacts = new ArrayList<ContactData>();
         for (int i=0; i<count;i++) {
+            File photo = new File("src/test/resources/stru.png");
             contacts.add(new ContactData().withName(String.format("test1 %s", i)).withLastname(String.format("test2 %s", i))
-                    .withGroup(String.format("test3 %s", i))
+                    .withGroup(String.format("test1"))
                     .withMobilePhone(String.format("111 %s", i)).withHomePhone(String.format("222 %s", i)).withWorkPhone(String.format("333 %s", i))
-                    .withEmail1(String.format("test1 %s", i)).withEmail2(String.format("test2 %s", i)).withEmail3(String.format("test3 %s", i)));
+                    .withEmail1(String.format("test1 %s", i)).withEmail2(String.format("test2 %s", i)).withEmail3(String.format("test3 %s", i))
+            .withPhoto(photo));
         }
         return contacts;
     }

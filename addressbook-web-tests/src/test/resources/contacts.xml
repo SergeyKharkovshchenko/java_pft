@@ -2,34 +2,37 @@
   <contacts>
     <name>test1 0</name>
     <lastname>test2 0</lastname>
-    <group>test3 0</group>
+    <group>test1</group>
     <homePhone>222 0</homePhone>
     <mobilePhone>111 0</mobilePhone>
     <workPhone>333 0</workPhone>
     <email1>test1 0</email1>
     <email2>test2 0</email2>
     <email3>test3 0</email3>
+    <photo>src\test\resources\stru.png</photo>
   </contacts>
   <contacts>
     <name>test1 1</name>
     <lastname>test2 1</lastname>
-    <group>test3 1</group>
+    <group>test1</group>
     <homePhone>222 1</homePhone>
     <mobilePhone>111 1</mobilePhone>
     <workPhone>333 1</workPhone>
     <email1>test1 1</email1>
     <email2>test2 1</email2>
     <email3>test3 1</email3>
+    <photo>src\test\resources\stru.png</photo>
   </contacts>
   <contacts>
     <name>test1 2</name>
     <lastname>test2 2</lastname>
-    <group>test3 2</group>
+    <group>test1</group>
     <homePhone>222 2</homePhone>
     <mobilePhone>111 2</mobilePhone>
     <workPhone>333 2</workPhone>
     <email1>test1 2</email1>
     <email2>test2 2</email2>
     <email3>test3 2</email3>
+    <photo>src\test\resources\stru.png</photo>
   </contacts>
 </list>
