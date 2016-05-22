@@ -1,24 +1,34 @@
 package ru.stqa.pft.addressbook.model;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
+
 import java.io.File;
 
 /**
  * Created by Sergey on 21.04.2016.
  */
+
+@XStreamAlias("contacts")
+
 public class ContactData {
+  @XStreamOmitField
   private int id = Integer.MAX_VALUE;
   private String name;
   private String lastname;
   private String address;
+  @XStreamOmitField
   private String email;
   private String group;
   private String homePhone;
   private String mobilePhone;
   private String workPhone;
+  @XStreamOmitField
   private String allPhones;
   private String email1;
   private String email2;
   private String email3;
+  @XStreamOmitField
   private String allEmails;
   private File photo;
 
