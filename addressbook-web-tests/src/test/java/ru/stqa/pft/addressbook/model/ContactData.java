@@ -2,7 +2,9 @@ package ru.stqa.pft.addressbook.model;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.*;
 import java.io.File;
 
 /**
@@ -11,34 +13,74 @@ import java.io.File;
 
 @XStreamAlias("contacts")
 
+@Entity
+@Table(name = "addressbook")
 public class ContactData {
+  @Id
+  @Column(name ="Id")
   @XStreamOmitField
   private int id = Integer.MAX_VALUE;
+  @Column(name ="firstname")
   private String name;
+  @Column(name ="lastname")
   private String lastname;
+
+  @Column(name ="address")
+  @Type(type = "text")
   private String address;
+
+  @Override
+  public String toString() {
+    return "ContactData{" +
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", lastname='" + lastname + '\'' +
+            '}';
+  }
+
+  @Transient //поле не будет извлекаться из бд
   @XStreamOmitField
   private String email;
+
+  @Transient //поле не будет извлекаться из бд
   private String group;
+
+  @Column(name ="home")
+  @Type(type = "text")
   private String homePhone;
+
+  @Column(name ="mobile")
+  @Type(type = "text")
   private String mobilePhone;
+
+  @Column(name ="work")
+  @Type(type = "text")
   private String workPhone;
+
+  @Transient //поле не будет извлекаться из бд
   @XStreamOmitField
   private String allPhones;
+  @Transient //поле не будет извлекаться из бд
   private String email1;
+  @Transient //поле не будет извлекаться из бд
   private String email2;
+  @Transient //поле не будет извлекаться из бд
   private String email3;
+  @Transient //поле не будет извлекаться из бд
   @XStreamOmitField
   private String allEmails;
-  private File photo;
+
+  @Column(name ="photo")
+  @Type(type = "text")
+  private String photo;
 
   public ContactData withPhoto(File photo) {
-    this.photo = photo;
+    this.photo = photo.getPath();
     return this;
   }
 
   public File getPhoto() {
-    return photo;
+    return new File(photo);
   }
 
   public ContactData withAddress(String address) {
@@ -165,15 +207,6 @@ public class ContactData {
 
   public String getGroup() {
     return group;
-  }
-
-  @Override
-  public String toString() {
-    return "ContactData{" +
-            "id='" + id + '\'' +
-            ", name='" + name + '\'' +
-            ", lastname='" + lastname + '\'' +
-            '}';
   }
 
   @Override
