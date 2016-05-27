@@ -19,13 +19,13 @@ import static org.hamcrest.MatcherAssert.*;
 public class ContactDetailsTests extends TestBase {
 
     @BeforeMethod
-    public void ensurePreconditions() {
-        app.goTo().homePage();
-        if (app.contact().all().size() == 0) {
-            app.goTo().gotoAddNewPage();
+    public void ensurePreconditions () {
+        if (app.db().contacts().size() == 0 ) {
+            app.goTo().homePage();
             app.contact().create(new ContactData().withName("Sergey").withLastname("Kharkovshchenko").withEmail("test1"));
         }
     }
+
 
     @Test
     public void testContactDetails () {

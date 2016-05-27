@@ -2,7 +2,9 @@ package ru.stqa.pft.addressbook.model;
 
 import com.google.common.collect.ForwardingSet;
 
+import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -18,6 +20,10 @@ private Set<ContactData> delegate;
 
   public Contacts() {
     this.delegate = new HashSet<ContactData>();
+  }
+
+  public Contacts(Collection<ContactData> contacts) {
+    this.delegate = new HashSet<ContactData>(contacts);
   }
 
   @Override
@@ -36,5 +42,4 @@ public Contacts withAdded (ContactData contact) {
     contacts.remove(contact);
     return contacts;
   }
-
 }

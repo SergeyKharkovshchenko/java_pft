@@ -14,7 +14,6 @@ public class DbConnectionTests {
     @Test
     public void testDbConnection() {
 
-
         Connection conn = null;
 
         try {
