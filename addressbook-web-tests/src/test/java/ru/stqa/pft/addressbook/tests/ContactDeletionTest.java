@@ -9,6 +9,7 @@ import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.Groups;
 
+import java.io.File;
 import java.util.List;
 import java.util.Set;
 
@@ -26,7 +27,10 @@ public class ContactDeletionTest extends TestBase {
     app.goTo().homePage();
     if (app.contact().all().size() == 0) {
       app.goTo().gotoAddNewPage();
-      app.contact().create(new ContactData().withName("Sergey").withLastname("Kharkovshchenko1").withEmail("test1"));
+      app.contact().create(new ContactData().withName("Sergey").withLastname("Kharkovshchenko1").withEmail("test 0")
+              .withPhoto(new File((String) "src\\test\\resources\\stru.png"))
+              .withGroup("test 0")
+              .withHomePhone("111").withMobilePhone("111").withWorkPhone("111"));
     }
   }
 
@@ -41,7 +45,7 @@ public class ContactDeletionTest extends TestBase {
     assertEquals(after.size(), before.size() - 1);
 
     assertThat (after, equalTo(before.without(deletedContact)));
+
+    verifyContactListInUI ();
   }
-
-
 }

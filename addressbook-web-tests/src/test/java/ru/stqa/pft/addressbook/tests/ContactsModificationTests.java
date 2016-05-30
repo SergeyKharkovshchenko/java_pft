@@ -25,10 +25,14 @@ import static org.testng.Assert.assertEquals;
 public class ContactsModificationTests extends TestBase {
 
   @BeforeMethod
-  public void ensurePreconditions () {
-    if (app.db().contacts().size() == 0 ) {
-      app.goTo().homePage();
-      app.contact().create(new ContactData().withName("Sergey").withLastname("Kharkovshchenko").withEmail("test1"));
+  public void ensurePreconditions() {
+    app.goTo().homePage();
+    if (app.contact().all().size() == 0) {
+      app.goTo().gotoAddNewPage();
+      app.contact().create(new ContactData().withName("Sergey").withLastname("Kharkovshchenko").withEmail("test 3")
+              .withPhoto(new File ((String) "src\\test\\resources\\stru.png"))
+              .withGroup("test 0")
+              .withHomePhone("111").withMobilePhone("111").withWorkPhone("111"));
     }
   }
 
@@ -38,6 +42,7 @@ public class ContactsModificationTests extends TestBase {
     ContactData modifiedContact = before.iterator().next();
     ContactData contact = new ContactData()
             .withId(modifiedContact.getId()).withName("Sergey1").withLastname("Kharkovshchenko1").withPhoto(new File ((String) "src\\test\\resources\\stru.png"))
+//
             .withHomePhone("111").withMobilePhone("111").withWorkPhone("111");
     app.goTo().homePage();
     app.contact().modify(contact);
@@ -45,5 +50,7 @@ public class ContactsModificationTests extends TestBase {
     assertEquals(after.size(), before.size());
 
     assertThat(after, equalTo(before.without(modifiedContact).withAdded(contact)));
+    app.goTo().homePage();
+    verifyContactListInUI ();
   }
 }

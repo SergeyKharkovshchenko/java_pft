@@ -25,6 +25,7 @@ public class ContactData {
   @Column(name ="lastname")
   private String lastname;
 
+  @Transient //поле не будет извлекаться из бд
   @Column(name ="address")
   @Type(type = "text")
   private String address;
@@ -36,9 +37,50 @@ public class ContactData {
   @Transient //поле не будет извлекаться из бд
   private String group;
 
+
   @Column(name ="home")
   @Type(type = "text")
   private String homePhone;
+
+  @Override
+  public String toString() {
+    return "ContactData{" +
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", lastname='" + lastname + '\'' +
+            ", group='" + group + '\'' +
+            ", homePhone='" + homePhone + '\'' +
+            ", mobilePhone='" + mobilePhone + '\'' +
+            ", workPhone='" + workPhone + '\'' +
+            '}';
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    ContactData that = (ContactData) o;
+
+    if (id != that.id) return false;
+    if (name != null ? !name.equals(that.name) : that.name != null) return false;
+    if (lastname != null ? !lastname.equals(that.lastname) : that.lastname != null) return false;
+    if (homePhone != null ? !homePhone.equals(that.homePhone) : that.homePhone != null) return false;
+    if (mobilePhone != null ? !mobilePhone.equals(that.mobilePhone) : that.mobilePhone != null) return false;
+    return workPhone != null ? workPhone.equals(that.workPhone) : that.workPhone == null;
+
+  }
+
+  @Override
+  public int hashCode() {
+    int result = id;
+    result = 31 * result + (name != null ? name.hashCode() : 0);
+    result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
+    result = 31 * result + (homePhone != null ? homePhone.hashCode() : 0);
+    result = 31 * result + (mobilePhone != null ? mobilePhone.hashCode() : 0);
+    result = 31 * result + (workPhone != null ? workPhone.hashCode() : 0);
+    return result;
+  }
 
   @Column(name ="mobile")
   @Type(type = "text")
@@ -68,27 +110,6 @@ public class ContactData {
   public ContactData withPhoto(File photo) {
     this.photo = photo.getPath();
     return this;
-  }
-
-  @Override
-  public String toString() {
-    return "ContactData{" +
-            "id=" + id +
-            ", name='" + name + '\'' +
-            ", lastname='" + lastname + '\'' +
-            ", address='" + address + '\'' +
-            ", email='" + email + '\'' +
-            ", group='" + group + '\'' +
-            ", homePhone='" + homePhone + '\'' +
-            ", mobilePhone='" + mobilePhone + '\'' +
-            ", workPhone='" + workPhone + '\'' +
-            ", allPhones='" + allPhones + '\'' +
-            ", email1='" + email1 + '\'' +
-            ", email2='" + email2 + '\'' +
-            ", email3='" + email3 + '\'' +
-            ", allEmails='" + allEmails + '\'' +
-            ", photo='" + photo + '\'' +
-            '}';
   }
 
   public File getPhoto() {
@@ -219,33 +240,6 @@ public class ContactData {
 
   public String getGroup() {
     return group;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    ContactData that = (ContactData) o;
-
-    if (id != that.id) return false;
-    if (name != null ? !name.equals(that.name) : that.name != null) return false;
-    if (lastname != null ? !lastname.equals(that.lastname) : that.lastname != null) return false;
-    if (homePhone != null ? !homePhone.equals(that.homePhone) : that.homePhone != null) return false;
-    if (mobilePhone != null ? !mobilePhone.equals(that.mobilePhone) : that.mobilePhone != null) return false;
-    return workPhone != null ? workPhone.equals(that.workPhone) : that.workPhone == null;
-
-  }
-
-  @Override
-  public int hashCode() {
-    int result = id;
-    result = 31 * result + (name != null ? name.hashCode() : 0);
-    result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
-    result = 31 * result + (homePhone != null ? homePhone.hashCode() : 0);
-    result = 31 * result + (mobilePhone != null ? mobilePhone.hashCode() : 0);
-    result = 31 * result + (workPhone != null ? workPhone.hashCode() : 0);
-    return result;
   }
 
 }
