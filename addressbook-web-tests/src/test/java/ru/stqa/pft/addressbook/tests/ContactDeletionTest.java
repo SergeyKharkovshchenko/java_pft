@@ -29,7 +29,7 @@ public class ContactDeletionTest extends TestBase {
       app.goTo().gotoAddNewPage();
       app.contact().create(new ContactData().withName("Sergey").withLastname("Kharkovshchenko1").withEmail("test 0")
               .withPhoto(new File((String) "src\\test\\resources\\stru.png"))
-              .withGroup("test 0")
+//              .withGroup("test 0")
               .withHomePhone("111").withMobilePhone("111").withWorkPhone("111"));
     }
   }
