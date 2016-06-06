@@ -14,7 +14,6 @@ public class RegistrationHelper extends HelperBase {
 
     public void start(String username, String email) {
         wd.get (app.getProperty("web.baseUrl") + "/signup_page.php");
-        //wd.findElement(By.name("username")).sendKeys(username);
         type (By.name("username"), username);
         type (By.name("email"), email);
         click (By.cssSelector("input[value='Signup']"));
@@ -26,4 +25,5 @@ public class RegistrationHelper extends HelperBase {
         type(By.name("password_confirm"), password);
         click (By.cssSelector("input[value='Update User']"));
     }
+
 }

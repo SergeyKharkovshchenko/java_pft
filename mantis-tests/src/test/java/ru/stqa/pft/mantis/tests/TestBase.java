@@ -1,5 +1,7 @@
 package ru.stqa.pft.mantis.tests;
 
+import org.apache.http.client.methods.HttpPost;
+import org.openqa.selenium.By;
 import org.openqa.selenium.remote.BrowserType;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;

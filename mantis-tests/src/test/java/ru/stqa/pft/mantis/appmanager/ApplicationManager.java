@@ -21,6 +21,7 @@ public class ApplicationManager {
 
   private String browser;
   private RegistrationHelper registrationHelper;
+  private UserPassChangeHelper userPassChangeHelper;
   private FtpHelper ftp;
   private MailHelper mailHelper;
 
@@ -39,12 +40,11 @@ public class ApplicationManager {
     if (wd != null){
       wd.quit();
     }
-
   }
 
   public HttpSession newSession () {
     return new HttpSession(this);
-  }
+  } // инициализация помощника при каждом обращении
 
   public String getProperty(String key) {
     return properties.getProperty(key);
@@ -55,6 +55,13 @@ if (registrationHelper == null) {
   registrationHelper = new RegistrationHelper(this);
 }
     return registrationHelper;
+  }
+
+  public UserPassChangeHelper userPassChangeHelper() {
+    if (userPassChangeHelper == null) {
+      userPassChangeHelper = new UserPassChangeHelper(this);
+    }
+    return userPassChangeHelper;
   }
 
   public FtpHelper ftp () {
