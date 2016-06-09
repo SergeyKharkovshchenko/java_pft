@@ -11,7 +11,6 @@ import java.net.URL;
 import java.rmi.RemoteException;
 import java.util.Arrays;
 import java.util.Set;
-import java.util.concurrent.ArrayBlockingQueue;
 import java.util.stream.Collectors;
 
 /**
@@ -29,7 +28,13 @@ public class SoapHelper {
         MantisConnectPortType mc = getMantisConnect();
         ProjectData[] projects = mc.mc_projects_get_user_accessible("administrator", "root");
         return Arrays.asList(projects).stream()
-                .map((p) ->new Project().withId(p.getId().intValue()).withName(p.getName())).collect(Collectors.toSet());
+                .map((p) -> new Project().withId(p.getId().intValue()).withName(p.getName()))
+                .collect(Collectors.toSet());
+    }
+
+    public IssueData getIssue(int issueId) throws MalformedURLException, ServiceException, RemoteException {
+        MantisConnectPortType mc = getMantisConnect();
+        return mc.mc_issue_get("administrator", "root", BigInteger.valueOf(issueId));
     }
 
     private MantisConnectPortType getMantisConnect() throws ServiceException, MalformedURLException {
