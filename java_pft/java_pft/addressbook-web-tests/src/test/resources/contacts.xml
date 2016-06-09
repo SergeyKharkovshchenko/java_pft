@@ -1,0 +1,14 @@
+<list>
+  <contacts>
+    <name>test1 0</name>
+    <lastname>test2 0</lastname>
+    <group>test 0</group>
+    <homePhone>222 0</homePhone>
+    <mobilePhone>111 0</mobilePhone>
+    <workPhone>333 0</workPhone>
+    <email1>test1 0</email1>
+    <email2>test2 0</email2>
+    <email3>test3 0</email3>
+    <photo>src\test\resources\stru.png</photo>
+  </contacts>
+</list>
