@@ -19,7 +19,7 @@ import static org.testng.Assert.assertEquals;
 /**
  * Created by SK on 10.06.2016.
  */
-public class RestAssuredTests {
+public class RestAssuredTests extends TestBase{
     @BeforeClass
     public void init() {
         RestAssured.authentication = RestAssured.basic("LSGjeU4yP1X493ud1hNniA==", "");

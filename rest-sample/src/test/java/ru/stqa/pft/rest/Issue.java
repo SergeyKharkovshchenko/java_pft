@@ -6,6 +6,7 @@ package ru.stqa.pft.rest;
 public class Issue {
     private int id;
     private String subject;
+    private String description;
 
     public String getDescription() {
         return description;
@@ -55,5 +56,4 @@ public class Issue {
         return this;
     }
 
-    private String description;
 }

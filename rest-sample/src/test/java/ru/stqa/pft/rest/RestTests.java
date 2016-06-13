@@ -19,7 +19,7 @@ import static org.testng.Assert.assertEquals;
 /**
  * Created by SK on 10.06.2016.
  */
-public class RestTests {
+public class RestTests extends TestBase {
 
     @Test
     public void testCreateIssue() throws IOException {
